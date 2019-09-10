@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+{% endblock %}
+{% block exstyle %}
+<style>
+	.btnContainer{
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.monthYear{
+		order: 2;
+		font-size: 30px;
+		align-items: center;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div>
+<div class="btnContainer">
+	<a class="btn" style="order: 1" href="{% url 'cal:calendar' %}?{{ prev_month }}">before</a>
+	<a class="btn" style="order: 3" href="{% url 'cal:calendar' %}?{{ next_month }}">after</a>
+
+	{{ calendar }}
+{% endblock %}

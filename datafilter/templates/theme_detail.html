@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+
+{% endblock %}
+
+{% block exstyle %}
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="themeDetailContainer">
+    <h1>{{ theme.title }}</h1>
+    <p>{{ theme.content }}</p>
+</div>
+<a href="{% url 'data_theme_add' theme.title %}">
+    <button type="button" onclick="alert(' 고객님의 켈린더에 추가되었습니다.')">추가하기</button>
+</a>
+<a href="{% url 'data_kategorie' %}">돌아가기</a>
+{% endblock %}

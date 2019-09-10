@@ -1,0 +1,9 @@
+hello im detail_theme
+테마 설명
+<h1>{{ theme.theme_seq  }}</h1>
+    <p>{{ theme.theme_color }}</p>
+    <p>{{ theme.theme_content }}</p>
+<button type="button" onclick="alert(' 고객님의 켈린더에 추가되었습니다.')">추가하기</button>
+<a href="{% url 'cal:theme_add' theme.theme_seq %}">add</a>
+<br><br>
+<a href="{% url 'cal:theme' %}">돌아가기</a>

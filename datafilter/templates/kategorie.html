@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+
+{% endblock %}
+
+{% block exstyle %}
+<style>
+
+</style>
+{% endblock %}
+{% block content %}
+<div class="categoryNumber">전체 카테고리 : 총 {{ themes.count }} 개</div>
+<div class="allCategoryContainer">
+    {% for theme in themes.all %}
+    <a href="{% url 'data_theme_detail' theme.title %}">    
+        <div class="categoryCardBox">
+            <h1>{{ theme.title }}</h1>
+            <p>{{ theme.summary }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<div class="categoryNumber">선택한 카테고리에 의한 이벤트 : 총 {{ event_results.count }} 개</div>
+<div class="selectCategoryContainer">
+    {% for cal_theme in cal_themes.all %}
+    <a href="{% url 'data_theme_detail' cal_theme.theme_title %}">    
+        <div class="categoryCardBox">
+            <h1>{{ cal_theme.theme_title }}</h1>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

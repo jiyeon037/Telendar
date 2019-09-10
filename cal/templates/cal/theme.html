@@ -1,0 +1,35 @@
+<br>
+유저 : {{ user.username }}
+
+
+<br><br>
+전체 카테고리 : 총 {{ themes.count }} 개
+{% for theme in themes.all %}
+<div class="container">
+    <h1>{{ theme.theme_seq  }}</h1>
+    <p>{{ theme.theme_color }}</p>
+    <p>{{ theme.theme_content }}</p>
+    <a href="{% url 'cal:theme_detail' theme.theme_seq %}">....more</a>
+</div>
+{% endfor %}
+<br><br>
+
+선택한 카테고리 :
+{% for user_theme in user_themes.all %}
+<div class="container">
+    <p>{{ user_theme.theme_seq.theme_seq }}</p>
+    <a href="{% url 'cal:theme_detail' user_theme.theme_seq.theme_seq %}">....more</a>
+</div>
+{% endfor %}
+<br><br>
+
+선택한 카테고리에 의한 이벤트 : 총 {{ event_results.count }} 개
+
+{% for event in event_results.all %}
+<div class="container">
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.summary }} </p>
+    <p>{{ event.StartTime }}</p>
+    <p>{{ event.EndTime }} </p>
+</div>
+{% endfor %}

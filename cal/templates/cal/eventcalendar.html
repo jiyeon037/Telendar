@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+{% endblock %}
+
+{% block exstyle %}
+<style>
+	body {
+		background-color: rgba(0, 0, 0, .1);
+	}
+	.EventDay{
+		margin-bottom: 15px;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	details {
+		width: 100%;
+		min-width: 600px;
+		min-height: 5px;
+		max-width: 700px;
+		padding: 40px 45px 40px 45px;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		position: relative;
+		font-size: 22px;
+		border: 1px solid rgba(0, 0, 0, .1);
+		border-radius: 15px;
+		box-sizing: border-box;
+		transition: all .3s;
+	}
+
+	details+details {
+		margin-top: 20px;
+	}
+
+	details[open] {
+		min-height: 50px;
+		background-color: #f6f7f8;
+		box-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
+	}
+
+	details .EventDayContents {
+		color: black;
+		font-weight: 300;
+	}
+
+	details .EventTime {
+		color: #dd8787;
+		font-weight: 300;
+	}
+	.btnContainer{
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.monthYear{
+		order: 2;
+		font-size: 30px;
+		align-items: center;
+	}
+
+	summary {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-weight: 500;
+		cursor: pointer;
+	}
+
+	summary:focus {
+		outline: none;
+		box-shadow: 0 0 0 4px #f6f7f8, 0 0 0 5px rebeccapurple;
+	}
+
+	summary::-webkit-details-marker {
+		display: none
+	}
+
+	.control-icon {
+		fill: rebeccapurple;
+		transition: .3s ease;
+		pointer-events: none;
+	}
+
+	.control-icon-close {
+		display: none;
+	}
+
+	details[open] .control-icon-close {
+		display: initial;
+		transition: .3s ease;
+	}
+
+	details[open] .control-icon-expand {
+		display: none;
+	}
+
+	details[open] summary:hover::after {
+		animation: pulse 1s ease;
+	}
+
+	@keyframes pulse {
+		25% {
+			transform: scale(1.1);
+		}
+
+		50% {
+			transform: scale(1);
+		}
+
+		75% {
+			transform: scale(1.1);
+		}
+
+		100% {
+			transform: scale(1);
+		}
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+	<div class="btnContainer">
+		<a class="btn" style="order: 1" href="{% url 'cal:event_calendar' %}?{{ prev_month }}">before</a>
+		<a class="btn" style="order: 3" href="{% url 'cal:event_calendar' %}?{{ next_month }}">after</a>
+	
+
+	{{ EvnetCalendar }}
+
+
+	{% endblock %}
